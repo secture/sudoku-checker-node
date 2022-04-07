@@ -1,0 +1,30 @@
+{
+  "name": "secture-sudoku-checker-node",
+  "version": "1.0.0",
+  "description": "Sudoku Checker for interviews",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "dependencies": {
+    "typescript": "^4.6.3"
+  },
+  "devDependencies": {
+    "tslint": "^6.1.3"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/secture/sudoku-checker-node.git"
+  },
+  "author": "Secture",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/secture/sudoku-checker-node/issues"
+  },
+  "homepage": "https://github.com/secture/sudoku-checker-node#readme"
+}
