@@ -1,16 +1,30 @@
 import { squareIndexes, Sudoku } from "./interfaces";
 import * as fs from "fs";
+import * as path from "path";
 
 export const readSudokuFile = (path: string): Sudoku => {
     try {
+        validateFile(path);
+
         const data: string = fs.readFileSync(path, 'utf8');
         formatFile(data);
         const sudoku: Sudoku = formatFile(data);
+        
         return sudoku;
     } catch (err: any) {
         throw new Error(err);
     }
 }; 
+
+const validateFile = (filePath:string): void => {
+    if (!fs.existsSync(filePath)) {
+        throw new Error("El archivo especificado no existe.")
+    }
+
+    if (path.extname(filePath) !== ".csv") {
+        throw new Error("El archivo especificado deve tener extensión .csv.")
+    }
+};
 
 const formatFile = (data: string): Sudoku => {
     const sudoku: Sudoku = {
