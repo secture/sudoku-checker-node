@@ -7,8 +7,8 @@ export const readSudokuFile = (path: string): Sudoku => {
         formatFile(data);
         const sudoku: Sudoku = formatFile(data);
         return sudoku;
-    } catch (err) {
-        throw new Error("Error al leer el archivo.");
+    } catch (err: any) {
+        throw new Error(err);
     }
 }; 
 
@@ -22,14 +22,26 @@ const formatFile = (data: string): Sudoku => {
     const lines = data.split('\r\n');
     
     if (lines.length < 9) {
-        throw new Error("Formato incorrecto.");
+        throw new Error("Formato incorrecto. Número de lineas inválido.");
     }
 
     sudoku.lines = getLines(lines);
+    validate(sudoku.lines);
     sudoku.columns = getColumns(sudoku.lines);
     sudoku.squares = getSquares(sudoku.lines);
     
     return sudoku;    
+};
+
+const validate = (elements: number[][]): void => {
+    for (const element of elements) {
+        if (element.length !== 9) {
+            throw new Error("Formato incorrecto. Número de columnas inválido.");
+        } 
+        if (!element.join('').match(/^[1-9]+$/)) {
+            throw new Error("Formato incorrecto. Sólo son válidos número del 1 al 9.");
+        }
+    }
 };
 
 const getSquares = (lines: number[][]): number[][] => {
