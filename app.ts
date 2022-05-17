@@ -1,5 +1,15 @@
 import { SudokuChecker } from './src/sudoku-checker'
 
-const checker: SudokuChecker = new SudokuChecker()
+const args = process.argv;
+const filePath = args[2];
 
-checker.check()
+if (!filePath) {
+    throw new Error("Deve especificar un archivo .csv.");
+}
+
+const checker: SudokuChecker = new SudokuChecker(filePath);
+
+const check = checker.check();
+
+console.log(check ? "Sudoku válido." : "Sudoku inválido.");
+
