@@ -22,7 +22,7 @@
     "build": "tsc --build",
     "start": "node ./dist/app.js",
     "dev": "ts-node app.ts",
-    "test": "npm run build && jest"
+    "test": "jest"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,3 @@
-// test malformed
-// test malformed2
-// test malformed3
 // test right
 // test wrong
 
@@ -41,5 +38,13 @@ describe('Test class SudokuChecker', () => {
         } catch (error: any) {
             expect(error.message).toBe("Error: Formato incorrecto. Sólo son válidos número del 1 al 9.");
         }
+    });
+    it('Test right file.', () => {
+        const checker: SudokuChecker = new SudokuChecker(`${__dirname}/data/right.csv`);
+        expect(checker.check()).toBe(true);
+    });
+    it('Test wrong file.', () => {
+        const checker: SudokuChecker = new SudokuChecker(`${__dirname}/data/wrong.csv`);
+        expect(checker.check()).toBe(false);
     });
 });
